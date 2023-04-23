@@ -10,7 +10,7 @@ BUILD_TYPE          := $(if $(BUILD_TYPE),$(BUILD_TYPE),debug)
 $(if $(filter debug release,$(BUILD_TYPE)),,$(error BUILD_TYPE "$(BUILD_TYPE)" invalid; should be debug or release))
 $(if $(filter linux windows,$(HOST)),,$(error HOST "$(HOST)" invalid; should be linux or windows))
 
-BASE_OUTPUT_PATH    := ../_Output
+BASE_OUTPUT_PATH    := ./_Output
 # tools
 ifeq ($(HOST),linux)
 OUTPUT_PATH         := $(BASE_OUTPUT_PATH)/$(HOST)/$(BUILD_TYPE)

@@ -1,7 +1,7 @@
 QMAKE  := C:\Qt\Qt5.14.2\5.14.2\msvc2017\bin\qmake.exe
-JOM    := "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023\bin\Hostx86\x86\nmake.exe"
-ENV_EXE := "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\usr\bin\env.exe"
-SETUP_VCVAR  := "C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Auxiliary\Build\vcvars32.bat"
+JOM    := "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.35.32215\bin\Hostx86\x86\nmake.exe"
+ENV_EXE := "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer\Git\usr\bin\env.exe"
+SETUP_VCVAR  := "C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars32.bat"
 QT_ENV_PATH  := "C:\Qt\Qt5.14.2\5.14.2\msvc2017\bin\qtenv2.bat"
 
 RM                            := $(TOOLS_DIR)\rm.exe

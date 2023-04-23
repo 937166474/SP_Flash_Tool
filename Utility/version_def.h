@@ -2,7 +2,7 @@
 #define VERION_DEF_H
 
 //************** PLEASE DO NOT MODIFY THE NAMES MANUALLY IN THIS FILE *******************
-#define  CUSTOMER_VER      true
+#define  CUSTOMER_VER      false
 #define  TEMP_VER          false
 
 #define  MAJOR_VER         6

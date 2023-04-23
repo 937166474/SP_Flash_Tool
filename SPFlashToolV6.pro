@@ -105,6 +105,7 @@ SOURCES += \
     UI/Src/WelcomeWidget.cpp \
     UI/Src/WriteMemoryWidget.cpp \
     UI/Src/main.cpp \
+    UI/Src/EnvGenWidget.cpp \
     Utility/FileUtils.cpp \
     Utility/IniItem.cpp \
     Utility/LogFilesClean.cpp \
@@ -221,6 +222,7 @@ HEADERS += \
     UI/Src/BackgroundWorker.h \
     UI/Src/BromAdapterWidget.h \
     UI/Src/BromConnSettingWidget.h \
+    UI/Src/EnvGenWidget.h \
     UI/Src/CheckHeader.h \
     UI/Src/DLCertWidget.h \
     UI/Src/DownloadWidget.h \
@@ -316,6 +318,7 @@ FORMS += \
     UI/Forms/BromConnSettingWidget.ui \
     UI/Forms/DLCertWidget.ui \
     UI/Forms/DownloadWidget.ui \
+    UI/Forms/EnvGenWidget.ui \
     UI/Forms/FFUWidget.ui \
     UI/Forms/FormatWidget.ui \
     UI/Forms/MainWindow.ui \

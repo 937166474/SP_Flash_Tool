@@ -21,7 +21,7 @@ QString MultiLanguageMapping::getString(STRING_TAG string_tag)
 }
 
 MultiLanguageMapping::MultiLanguageMapping():
-    m_language_tag(LANGUAGE_TAG::TT_ENG)
+    m_language_tag(LANGUAGE_TAG::TT_ZH_CH)
 {
     initEngMapping();
     initZhCHMapping();

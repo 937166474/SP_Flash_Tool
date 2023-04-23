@@ -18,6 +18,7 @@
 #include "MemoryTestWidget.h"
 #include "WriteMemoryWidget.h"
 #include "BromAdapterWidget.h"
+#include "EnvGenWidget.h"
 #include "FFUWidget.h"
 #include "WelcomeWidget.h"
 #include "DLCertWidget.h"

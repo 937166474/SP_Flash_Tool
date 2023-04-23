@@ -9,7 +9,7 @@ QSharedPointer<OptionIniFileMgr> OptionIniFileMgr::m_instance = QSharedPointer<O
 OptionIniFileMgr::OptionIniFileMgr():
     m_enable_trace(true), m_clear_older(2), m_da_log_level("INFO"),
     m_da_log_channel("UART"), m_log_path(Utils::GetSpecifalFolderPath().c_str()),
-    m_baud_rate(3), m_battery(0), m_print_driver_version(false),
+    m_baud_rate(3), m_battery(2), m_print_driver_version(false),
     m_language(0), m_da_chksum_level(0), m_risk_reminder(false),
     m_check_rpmb(false), m_check_storage_life_cycle(true),
     m_boot_to_fastmode(false),

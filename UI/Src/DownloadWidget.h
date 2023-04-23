@@ -38,6 +38,7 @@ public:
 
     void Enable_groupBox_boot_mode_flag(bool enable);
     bool hasImageSelected() const;
+    bool checkEnvImageSelected() const;
 
 protected:
     bool eventFilter(QObject *watched, QEvent *event) override;

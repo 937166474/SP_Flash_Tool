@@ -216,6 +216,7 @@ QStringList DownloadWidget::getTableHeaderLabels() const
                          << tr("Start Address") << tr("Location");
 }
 
+// updat file path
 void DownloadWidget::replaceImageFile(const QModelIndex & index)
 {
     QString file = index.model()->data(index, Qt::DisplayRole).toString();
@@ -291,7 +292,13 @@ void DownloadWidget::changeDownloadSceneToDefault()
 #define NOT_FOUND -1
     // linear switch to DOWNLOAD_ONLY, FIRMWARE_UPGEADE and FOEMAT_ALL_DOWNLOAD if they exists
     // when do scatter change, item checked change or location change.
-    if(ui->comboBox_Scene->findData(DOWNLOAD_ONLY) != NOT_FOUND)
+    if(ui->comboBox_Scene->findData(FORMAT_ALL_DOWNLOAD) != NOT_FOUND)
+    {
+        if (m_download_scene != FORMAT_ALL_DOWNLOAD) {
+            ui->comboBox_Scene->setCurrentIndex(ui->comboBox_Scene->findData(FORMAT_ALL_DOWNLOAD));
+            m_download_scene = FORMAT_ALL_DOWNLOAD;
+        }
+    } else if(ui->comboBox_Scene->findData(DOWNLOAD_ONLY) != NOT_FOUND)
     {
         if (m_download_scene != DOWNLOAD_ONLY) {
             ui->comboBox_Scene->setCurrentIndex(ui->comboBox_Scene->findData(DOWNLOAD_ONLY));
@@ -303,13 +310,6 @@ void DownloadWidget::changeDownloadSceneToDefault()
         if (m_download_scene != FIRMWARE_UPGRADE) {
             ui->comboBox_Scene->setCurrentIndex(ui->comboBox_Scene->findData(FIRMWARE_UPGRADE));
             m_download_scene = FIRMWARE_UPGRADE;
-        }
-    }
-    else if(ui->comboBox_Scene->findData(FORMAT_ALL_DOWNLOAD) != NOT_FOUND)
-    {
-        if (m_download_scene != FORMAT_ALL_DOWNLOAD) {
-            ui->comboBox_Scene->setCurrentIndex(ui->comboBox_Scene->findData(FORMAT_ALL_DOWNLOAD));
-            m_download_scene = FORMAT_ALL_DOWNLOAD;
         }
     }
 }
@@ -420,6 +420,10 @@ bool DownloadWidget::validateBeforeDownload()
         return false;
     }
 
+    if (this->checkEnvImageSelected()) {
+        // if (ui->)
+    }
+
     bool rsc_invalid = ui->comboBox_rsc->isVisible() && (ui->comboBox_rsc->currentText().isEmpty());
     if(rsc_invalid) {
         Utils::flashtool_message_box(m_mainwindow,
@@ -467,6 +471,25 @@ bool DownloadWidget::hasImageSelected() const
         }
     }
     return has_image_selected;
+}
+
+bool DownloadWidget::checkEnvImageSelected() const
+{
+    bool has_env_image_selected = false;
+    QAbstractItemModel *model = ui->tableView->model();
+    for (int row = 0; row < model->rowCount(); ++row) {
+        QModelIndex index = model->index(row, dct_ENABLE);
+        QString image_name = index.data().toString().toUpper();
+        if (image_name == "ENV") {
+            Qt::CheckState check_state = static_cast<Qt::CheckState>(index.data(Qt::CheckStateRole).toInt());
+            if (check_state == Qt::Checked) {
+                has_env_image_selected = true;
+                break;
+            }
+            break;
+        }
+    }
+    return has_env_image_selected;
 }
 
 bool DownloadWidget::eventFilter(QObject *watched, QEvent *event)
@@ -551,6 +574,8 @@ std::list<std::shared_ptr<CmdWrapper> > DownloadWidget::createDLOnlyCmdWrapperLi
 std::list<std::shared_ptr<CmdWrapper> > DownloadWidget::createFmtDLCmdWrapperList()
 {
     std::list<std::shared_ptr<CmdWrapper>> cmd_wrapper_list;
+    // add read back cmd here
+    
     cmd_wrapper_list.push_back(m_mainwindow->getFormatWidget()->createAutoFormatCmdWrapper());
     cmd_wrapper_list.push_back(this->createFmtDLCmdWrapper());
     return cmd_wrapper_list;
@@ -585,6 +610,7 @@ std::shared_ptr<CmdWrapper> DownloadWidget::createFmtDLCmdWrapper()
     return  cmd_wrapper;
 }
 
+// 
 std::shared_ptr<CmdWrapper> DownloadWidget::createFWCmdWrapper()
 {
     std::shared_ptr<FlashUpdateExCmdXML> flashUpdateExCmdXML = std::make_shared<FlashUpdateExCmdXML>();

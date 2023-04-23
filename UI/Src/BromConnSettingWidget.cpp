@@ -112,8 +112,8 @@ void BromConnSettingWidget::showRebootOptions(bool show)
 void BromConnSettingWidget::setUIState()
 {
     ui->groupBox_autoReboot->setChecked(!ToolInfo::IsCustomerVer());
-    updateAdvancedMode(false);
-    showUARTInfo(false);
+    updateAdvancedMode(true);
+    showUARTInfo(true);
 
     loadSettings();
 }

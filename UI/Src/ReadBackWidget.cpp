@@ -327,6 +327,7 @@ cmd_wrapper_ptr ReadBackWidget::createReadPartitionTableCmdWrapper()
     std::shared_ptr<CmdWrapper> cmd_wrapper = std::make_shared<CmdWrapper>(readPartitionTblCmdXML);
     qRegisterMetaType<std::shared_ptr<Connection>>("std::shared_ptr<Connection>");
     qRegisterMetaType<std::shared_ptr<ICmdXMLGenerator>>("std::shared_ptr<ICmdXMLGenerator>");
+    // get partition table & output
     connect(cmd_wrapper.get(), &CmdWrapper::signal_after_cmd,
                      this, &ReadBackWidget::slot_after_read_partition_table_cmd, Qt::BlockingQueuedConnection);
     return  cmd_wrapper;
@@ -397,6 +398,7 @@ void ReadBackWidget::showAutoRBColumns() const
     ui->tableView->showColumn(READBACK_COLUMN::rbc_Name);
 }
 
+//
 void ReadBackWidget::manualReadback()
 {
     m_mainwindow->setupBeforeCmdOperation(getConnStage());
@@ -525,6 +527,7 @@ void ReadBackWidget::on_toolButton_readBack_clicked()
     }
 }
 
+//
 void ReadBackWidget::on_toolButton_read_pt_clicked()
 {
     if (!m_mainwindow->isFlashXMLLoaded())
@@ -538,6 +541,7 @@ void ReadBackWidget::on_toolButton_read_pt_clicked()
     m_mainwindow->setNeedInteraction(true);
     BackgroundWorker::m_interaction_finished = false;
     m_mainwindow->setupBeforeCmdOperation(getConnStage());
+    // read back cmd
     m_mainwindow->addCmdWrapper(createReadPartitionTableCmdWrapper());
     m_mainwindow->startCmd(tr("Readback Ok"));
 }

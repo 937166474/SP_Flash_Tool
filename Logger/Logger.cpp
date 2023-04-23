@@ -232,7 +232,7 @@ void LoggerImpl::RemovePCLogHandle() {
         {
             delete iter->OutStream;
         }
-        m_LogHandles.remove(*iter);
+        // m_LogHandles.remove(*iter);
     }
 }
 

@@ -83,6 +83,16 @@
          </widget>
         </item>
         <item>
+         <widget class="EnvGenWidget" name="envGenWidget" native="true">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+         </widget>
+        </item>
+        <item>
          <layout class="QHBoxLayout" name="horizontalLayout_3">
           <property name="spacing">
            <number>9</number>
@@ -1083,6 +1093,12 @@ background-color: rgb(250, 255, 247);
    <class>BromConnSettingWidget</class>
    <extends>QWidget</extends>
    <header>BromConnSettingWidget.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>EnvGenWidget</class>
+   <extends>QWidget</extends>
+   <header>EnvGenWidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

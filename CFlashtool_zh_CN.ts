@@ -1766,7 +1766,7 @@ Do you want to continue anyway?</source>
     </message>
     <message>
         <source>Download Only</source>
-        <translation type="vanished">下载</translation>
+        <translation type="vanished">下载123</translation>
     </message>
     <message>
         <location filename="Utility/FileUtils.cpp" line="347"/>
